@@ -18,10 +18,11 @@ from django.urls import path
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 from . import views
-from courses.views import course_list
+from courses.views import course_list, course_detail, step_detail
 
 urlpatterns = [
-
+    path('courses/<int:course_pk>/<int:step_pk>', step_detail),
+    path('courses/<int:pk>', course_detail),
 	path('courses/', course_list),
     path('admin/', admin.site.urls),
     path('', views.hello_world),
